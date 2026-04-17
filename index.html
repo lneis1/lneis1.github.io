@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samarth Barve — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0f0e0d;
+    --paper: #f5f3ee;
+    --cream: #ede9e0;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a0;
+    --muted: #6b6760;
+    --line: rgba(15,14,13,0.12);
+    --accent: #1a3a4a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(245,243,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem 4rem 4rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 400px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.65s forwards;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.3rem 0.75rem;
+    border: 0.5px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+    background: var(--cream);
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.8s forwards;
+  }
+  .btn-primary {
+    padding: 0.75rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-outline {
+    padding: 0.75rem 1.75rem;
+    border: 0.5px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 0.5px solid var(--gold-light);
+    opacity: 0.6;
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 0.5px solid var(--gold-light);
+    opacity: 0.4;
+  }
+  .photo-frame {
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.6s forwards;
+  }
+  .photo-frame img {
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  .photo-placeholder {
+    width: 320px;
+    height: 400px;
+    background: linear-gradient(160deg, #d4cec4 0%, #b8b2a8 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    gap: 0.5rem;
+  }
+  .photo-placeholder .initials {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  .photo-placeholder .add-photo-note {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+  .photo-border {
+    position: absolute;
+    top: 16px; left: 16px;
+    width: 100%; height: 100%;
+    border: 0.5px solid var(--gold);
+    z-index: -1;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5px solid var(--line);
+    border-bottom: 0.5px solid var(--line);
+  }
+  .stat {
+    padding: 2rem 2.5rem;
+    border-right: 0.5px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-num span { color: var(--gold); }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--line);
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--ink); font-weight: 500; }
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .highlight-item {
+    padding: 1.25rem 1.5rem;
+    background: var(--cream);
+    border-left: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .highlight-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .highlight-value {
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── EXPERIENCE ── */
+  .experience-list { display: flex; flex-direction: column; }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid var(--line);
+    transition: background 0.2s;
+  }
+  .exp-item:first-child { border-top: 0.5px solid var(--line); }
+  .exp-meta { padding-top: 0.2rem; }
+  .exp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  .exp-org {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .exp-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+  .exp-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border: 0.5px solid var(--line);
+    color: var(--muted);
+    background: var(--cream);
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--cream); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--paper);
+    padding: 1.75rem;
+    border: 0.5px solid var(--line);
+  }
+  .skill-card-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .skill-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .skill-list li {
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-left: 0.75rem;
+    position: relative;
+  }
+  .skill-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .project-card {
+    padding: 2rem;
+    border: 0.5px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .project-card:hover { border-color: var(--gold); }
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .stack-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border: 0.5px solid var(--line);
+    color: var(--muted);
+  }
+  .project-links { margin-top: 1.25rem; display: flex; gap: 1rem; }
+  .project-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 0.5px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .project-link:hover { border-bottom-color: var(--gold); }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--ink); color: var(--paper); }
+  #education .section-title { color: var(--paper); }
+  #education .section-num { color: var(--gold); }
+  #education .section-line { background: rgba(255,255,255,0.12); }
+  .edu-card {
+    border: 0.5px solid rgba(255,255,255,0.12);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+  .edu-card + .edu-card { margin-top: 1.5rem; }
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .edu-school {
+    font-size: 0.85rem;
+    color: rgba(245,243,238,0.5);
+    margin-bottom: 1rem;
+  }
+  .edu-details { font-size: 0.82rem; color: rgba(245,243,238,0.55); line-height: 1.7; }
+  .edu-gpa {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-align: right;
+    line-height: 1;
+  }
+  .edu-gpa-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.35);
+    text-align: right;
+    margin-top: 0.3rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+  .contact-sub {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 1rem 1.25rem;
+    border: 0.5px solid var(--line);
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold); }
+  .contact-link-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 60px;
+  }
+  .contact-link-val {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .contact-form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .contact-form-area input,
+  .contact-form-area textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: var(--cream);
+    border: 0.5px solid var(--line);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .contact-form-area input:focus,
+  .contact-form-area textarea:focus { border-color: var(--gold); }
+  .contact-form-area textarea { min-height: 120px; }
+  .contact-form-area input::placeholder,
+  .contact-form-area textarea::placeholder { color: var(--muted); opacity: 0.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 0.5px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .hero-left { padding: 3rem 1.5rem; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .stat { border-right: none; border-bottom: 0.5px solid var(--line); }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid, .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .edu-card { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Samarth Barve</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home" style="padding: 0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Quantitative Finance · Research · Engineering</p>
+    <h1 class="hero-name">Samarth<br><em>Barve</em></h1>
+    <p class="hero-sub">Dual Degree student at IIT Kharagpur bridging the worlds of financial engineering, data science, and materials research. Pursuing rigour across every domain I touch.</p>
+    <div class="hero-tags">
+      <span class="tag">B.Tech + M.Tech · IIT KGP</span>
+      <span class="tag">CGPA 9.05</span>
+      <span class="tag">INMO Merit List 2021</span>
+      <span class="tag">Published Researcher</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#projects" class="btn-outline">View Projects</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <!-- REPLACE THE div below with: <img src="your-photo.jpg" alt="Samarth Barve"> -->
+      <div class="photo-placeholder">
+        <span class="initials">SB</span>
+        <span class="add-photo-note">Add photo.jpg here</span>
+      </div>
+      <div class="photo-border"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar reveal">
+  <div class="stat">
+    <div class="stat-num">9<span>.05</span></div>
+    <div class="stat-label">CGPA · IIT Kharagpur</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3<span>+</span></div>
+    <div class="stat-label">Research Internships</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">1<span> pub</span></div>
+    <div class="stat-label">Published Paper (SNN)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5<span>+</span></div>
+    <div class="stat-label">Languages & Frameworks</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01 —</span>
+    <h2 class="section-title">About</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a final-year Dual Degree student at <strong>IIT Kharagpur</strong>, pursuing B.Tech in Metallurgical Engineering and M.Tech in Financial Engineering, with a minor in Mathematics and Computing.</p>
+      <p>My interests sit at the intersection of <strong>quantitative finance</strong>, <strong>time-series modelling</strong>, and <strong>neuromorphic computing</strong> — a combination that's led me from building SNN-based sensor placement algorithms to designing alpha-generation frameworks for portfolio management firms.</p>
+      <p>I have a deep fondness for mathematical rigour, honed through competitive olympiad mathematics, and I bring that proof-oriented mindset to every technical problem I encounter — whether it's a stochastic differential equation or a gait data pipeline.</p>
+      <p>Outside work: <strong>cryptic crosswords</strong>, Khaled Hosseini's prose, cycling across campus, and the occasional failed sourdough attempt.</p>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-item">
+        <span class="highlight-label">Current Focus</span>
+        <span class="highlight-value">Summer Research Internship at WMG, University of Warwick — statistical modelling of MoCap gait data (VR vs non-VR)</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-label">Career Target</span>
+        <span class="highlight-value">Quantitative Roles — Goldman Sachs, JPMC, Morgan Stanley, Nomura; Data Science at Amex & BlackRock</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-label">Math Background</span>
+        <span class="highlight-value">INMO Merit List 2021 — proof-oriented mathematical thinking underpins all technical work</span>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-label">Location</span>
+        <span class="highlight-value">IIT Kharagpur, West Bengal, India</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience" style="background: var(--cream);">
+  <div class="section-header reveal">
+    <span class="section-num">02 —</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="experience-list">
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">May – Jul 2026</span>
+        <div class="exp-org">University of Warwick, UK</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Research Intern · WMG</div>
+        <div class="exp-desc">Statistical modelling of Motion Capture (MoCap) gait data under Dr. Arnab Palit, comparing movement biomechanics in VR and non-VR conditions. Involves time-series analysis, hypothesis testing, and biomechanical signal processing on high-dimensional sensor data.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Statistical Modelling</span>
+          <span class="exp-tag">MoCap</span>
+          <span class="exp-tag">Time Series</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Biomechanics</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">2024</span>
+        <div class="exp-org">Purnartha PMS</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Quantitative Finance Intern</div>
+        <div class="exp-desc">Built quantitative models for portfolio management, focusing on equity research and systematic signal generation. Gained hands-on exposure to factor investing, financial data pipelines, and PMS-grade workflow with real AUM considerations.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Quantitative Finance</span>
+          <span class="exp-tag">Factor Models</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Portfolio Management</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">2023</span>
+        <div class="exp-org">University of Oulu, Finland</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Research Intern · Neuromorphic Computing</div>
+        <div class="exp-desc">Developed a Spiking Neural Network (SNN) framework for optimal sensor placement, resulting in a published paper. Compared SNN performance against ANN, Hill Climbing, PSO, and Genetic Algorithm baselines on 2D spatial coverage problems.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">SNN</span>
+          <span class="exp-tag">Neuromorphic Computing</span>
+          <span class="exp-tag">MATLAB</span>
+          <span class="exp-tag">Python</span>
+          <span class="exp-tag">Published Research</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <span class="exp-date">2024</span>
+        <div class="exp-org">FidelFolio Investments</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Quant Research Project · Interview</div>
+        <div class="exp-desc">Built a full mathematical and Python implementation of a "Predicted vs Realised Fundamental Analysis" framework — rolling prediction windows, t-based prediction intervals, z-scores, portfolio health scores, and a live Streamlit dashboard for PMS-grade reporting.</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Fundamental Analysis</span>
+          <span class="exp-tag">Rolling Windows</span>
+          <span class="exp-tag">Streamlit</span>
+          <span class="exp-tag">Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">03 —</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card featured reveal">
+      <div>
+        <span class="project-num">Project 01 · Published</span>
+        <h3 class="project-title">SNN-Based Optimal Sensor Placement</h3>
+        <p class="project-desc">A comparative evaluation of Spiking Neural Networks against ANN, Hill Climbing, PSO, and Genetic Algorithms for 2D optimal sensor placement. The SNN-QP solver formulated coverage as a combinatorial optimisation problem balancing spatial coverage against sensor overlap penalties. Published as a peer-reviewed paper.</p>
+        <div class="project-stack">
+          <span class="stack-item">Python</span><span class="stack-item">MATLAB</span>
+          <span class="stack-item">SNN</span><span class="stack-item">QP Solver</span>
+          <span class="stack-item">PSO / GA</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link">View Paper →</a>
+        </div>
+      </div>
+      <div style="background: var(--cream); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; justify-content: center;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;">Key Result</div>
+        <div style="font-family: 'DM Serif Display', serif; font-size: 1.75rem; line-height: 1.2; color: var(--ink);">SNN matched PSO accuracy with lower computational overhead on sparse grids</div>
+        <div style="font-size: 0.78rem; color: var(--muted);">Benchmarked across 5 competing optimisation strategies on standardised 2D environments</div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-num">Project 02</span>
+      <h3 class="project-title">Multibagger Stock Prediction via LSTM</h3>
+      <p class="project-desc">RNN/LSTM model trained on historical financial data to predict ~3× return equities. Feature engineering included fundamental ratios, momentum indicators, and sector-adjusted normalisation. Built with PyTorch on 10+ years of NSE data.</p>
+      <div class="project-stack">
+        <span class="stack-item">PyTorch</span><span class="stack-item">LSTM</span>
+        <span class="stack-item">NSE Data</span><span class="stack-item">Feature Engineering</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-num">Project 03</span>
+      <h3 class="project-title">PM2.5 & Urban Economic Activity · Time Series</h3>
+      <p class="project-desc">Time-series analysis project (MA60056) modelling the relationship between PM2.5 air pollution and urban economic activity indicators. Included stationarity tests, cointegration, VAR models, and impulse response analysis in R.</p>
+      <div class="project-stack">
+        <span class="stack-item">R</span><span class="stack-item">VAR Models</span>
+        <span class="stack-item">Cointegration</span><span class="stack-item">LaTeX</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <span class="project-num">Project 04</span>
+      <h3 class="project-title">Predicted vs Realised Fundamental Analysis</h3>
+      <p class="project-desc">Full quant framework with rolling prediction windows, t-distribution-based prediction intervals, z-scores per fundamental metric, composite portfolio health scores, and a live Streamlit dashboard. Designed for PMS-grade reporting and real-time monitoring.</p>
+      <div class="project-stack">
+        <span class="stack-item">Python</span><span class="stack-item">Streamlit</span>
+        <span class="stack-item">Rolling Windows</span><span class="stack-item">Statistics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">04 —</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">Languages</div>
+      <h3 class="skill-card-title">Programming</h3>
+      <ul class="skill-list">
+        <li>Python (NumPy, Pandas, SciPy)</li>
+        <li>C++</li>
+        <li>MATLAB</li>
+        <li>R</li>
+        <li>LaTeX / Overleaf</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">ML & AI</div>
+      <h3 class="skill-card-title">Machine Learning</h3>
+      <ul class="skill-list">
+        <li>PyTorch / TensorFlow</li>
+        <li>RNN / LSTM architectures</li>
+        <li>Spiking Neural Networks (SNN)</li>
+        <li>Scikit-learn</li>
+        <li>Streamlit dashboards</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">Finance</div>
+      <h3 class="skill-card-title">Quantitative Finance</h3>
+      <ul class="skill-list">
+        <li>Factor Models & Alpha Generation</li>
+        <li>Portfolio Optimisation</li>
+        <li>Fundamental Analysis (ROE, ROCE)</li>
+        <li>Time Series (VAR, ARIMA)</li>
+        <li>CFA Level 1 preparation</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">Mathematics</div>
+      <h3 class="skill-card-title">Mathematical Methods</h3>
+      <ul class="skill-list">
+        <li>Stochastic Calculus</li>
+        <li>Optimisation Theory</li>
+        <li>Statistical Inference</li>
+        <li>Linear Algebra & Probability</li>
+        <li>Olympiad-level Problem Solving</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">Research</div>
+      <h3 class="skill-card-title">Research Skills</h3>
+      <ul class="skill-list">
+        <li>MoCap / Biomechanical data analysis</li>
+        <li>Materials Characterisation (EPMA, XPS, EDS)</li>
+        <li>SAED pattern indexing</li>
+        <li>DSC / Thermal Analysis</li>
+        <li>Academic writing & LaTeX typesetting</li>
+      </ul>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-icon">Tools</div>
+      <h3 class="skill-card-title">Tools & Platforms</h3>
+      <ul class="skill-list">
+        <li>Git / GitHub</li>
+        <li>Jupyter Notebooks</li>
+        <li>Overleaf</li>
+        <li>Bloomberg / financial databases</li>
+        <li>Reinforcement Learning (OpenAI Gym)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-num">05 —</span>
+    <h2 class="section-title">Education</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-card reveal">
+    <div>
+      <div class="edu-degree">B.Tech · Metallurgical Engineering<br>M.Tech · Financial Engineering</div>
+      <div class="edu-school">Indian Institute of Technology, Kharagpur · 2022 – 2027</div>
+      <div class="edu-details">
+        Dual Degree Programme. Minor in Mathematics and Computing.<br>
+        Relevant coursework: Financial Derivatives, Stochastic Calculus, Time Series Analysis (MA60056), Reinforcement Learning, Numerical Optimisation, Materials Characterisation.
+      </div>
+    </div>
+    <div>
+      <div class="edu-gpa">9.05</div>
+      <div class="edu-gpa-label">CGPA</div>
+    </div>
+  </div>
+  <div class="edu-card reveal" style="margin-top: 1.5rem;">
+    <div>
+      <div class="edu-degree">INMO Merit List</div>
+      <div class="edu-school">Indian National Mathematical Olympiad · 2021</div>
+      <div class="edu-details">
+        Recognised on the INMO Merit List in 2021, reflecting strong foundation in proof-based competition mathematics — combinatorics, number theory, and olympiad geometry.
+      </div>
+    </div>
+    <div>
+      <div class="edu-gpa" style="font-size: 1.5rem; padding-top: 0.5rem;">2021</div>
+      <div class="edu-gpa-label">INMO</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-num">06 —</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h3 class="contact-headline">Let's build something rigorous together.</h3>
+      <p class="contact-sub">I'm open to quant research roles, data science internships, and research collaborations. If you're working on something interesting at the intersection of mathematics, finance, or machine learning — I'd love to hear about it.</p>
+      <div class="contact-links">
+        <a href="mailto:samarthbarve@kgpian.iitkgp.ac.in" class="contact-link">
+          <span class="contact-link-type">Email</span>
+          <span class="contact-link-val">samarthbarve@kgpian.iitkgp.ac.in</span>
+        </a>
+        <a href="https://linkedin.com/in/samarthbarve" target="_blank" class="contact-link">
+          <span class="contact-link-type">LinkedIn</span>
+          <span class="contact-link-val">linkedin.com/in/samarthbarve</span>
+        </a>
+        <a href="https://github.com/samarthbarve" target="_blank" class="contact-link">
+          <span class="contact-link-type">GitHub</span>
+          <span class="contact-link-val">github.com/samarthbarve</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-area reveal">
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Your email">
+      <textarea placeholder="Your message"></textarea>
+      <a href="mailto:samarthbarve@kgpian.iitkgp.ac.in" class="btn-primary" style="text-align: center; display: block;">Send Message</a>
+      <p style="font-size: 0.72rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">* Form will open your email client. For backend support, connect a service like Formspree.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-copy">© 2026 Samarth Barve · IIT Kharagpur</span>
+  <span class="footer-copy">Built with HTML · Hosted on GitHub Pages</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
